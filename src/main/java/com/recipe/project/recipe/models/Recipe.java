@@ -2,6 +2,7 @@ package com.recipe.project.recipe.models;
 
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Set;
 
 @Entity
@@ -29,6 +30,14 @@ public class Recipe {
     private Byte[] image;
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void addIngredient(Ingredient ingredient){
+        this.ingredients.add(ingredient);
+    }
 
     public Long getId() {
         return Id;
