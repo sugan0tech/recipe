@@ -4,7 +4,6 @@ package com.recipe.project.recipe.models;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Set;
 
 @Getter
