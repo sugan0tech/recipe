@@ -34,7 +34,12 @@ public class Recipe {
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
+    public void setNotes(Notes notes){
+        this.notes = notes;
+        notes.setRecipe(this);
+    }
     public void addIngredient(Ingredient ingredient){
+        ingredient.setRecipe(this);
         this.ingredients.add(ingredient);
     }
 
