@@ -27,9 +27,9 @@ public class IndexController {
         log.debug("index page triggred");
         log.info("hi there");
         Optional<Category>  categoryOptional = categoryRepository.findByDescription("America");
-        Optional<UnitOfMeasure> unitOfMeasure = unitOfMeasureRepository.findByDescription("Cup");
-        System.out.println("cat Id is : " + categoryOptional.get().getId());
-        System.out.println("Uom Id is : " + unitOfMeasure.get().getId());
+        Optional<UnitOfMeasure> unitOfMeasureOptional = unitOfMeasureRepository.findByDescription("Cup");
+        categoryOptional.ifPresent(category -> log.info("cat Id is : " + category.getId()));
+        unitOfMeasureOptional.ifPresent(unitOfMeasure -> log.info("Uom Id is : " + unitOfMeasure.getId()));
         return "index";
     }
     @RequestMapping("All")
