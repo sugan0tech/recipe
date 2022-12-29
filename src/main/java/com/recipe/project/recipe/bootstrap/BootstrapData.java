@@ -1,59 +1,97 @@
 package com.recipe.project.recipe.bootstrap;
 
 
-import com.recipe.project.recipe.models.Category;
-import com.recipe.project.recipe.models.UnitOfMeasure;
+import com.recipe.project.recipe.models.*;
 import com.recipe.project.recipe.repositories.CategoryRepository;
+import com.recipe.project.recipe.repositories.RecipeRepository;
 import com.recipe.project.recipe.repositories.UnitOfMeasureRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
 
 @Component
 public class BootstrapData implements CommandLineRunner {
     private final CategoryRepository categoryRepository;
     private final UnitOfMeasureRepository unitOfMeasureRepository;
+    private final RecipeRepository recipeRepository;
 
-    public BootstrapData(CategoryRepository categoryRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
+    public BootstrapData(CategoryRepository categoryRepository, UnitOfMeasureRepository unitOfMeasureRepository,
+                         RecipeRepository recipeRepository) {
         this.categoryRepository = categoryRepository;
         this.unitOfMeasureRepository = unitOfMeasureRepository;
+        this.recipeRepository = recipeRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
-        Category category1 = new Category();
-        category1.setDescription("America");
-        Category category2 = new Category();
-        category2.setDescription("Italian");
-        Category category3 = new Category();
-        category3.setDescription("Indian");
-        Category category4 = new Category();
-        category4.setDescription("Mexican");
-        Category category5 = new Category();
-        category5.setDescription("Fast Food");
+        Category americanCategory = new Category();
+        americanCategory.setDescription("America");
+        Category italianCategory = new Category();
+        italianCategory.setDescription("Italian");
+        Category indianCategory = new Category();
+        indianCategory.setDescription("Indian");
+        Category mexicalCategory = new Category();
+        mexicalCategory.setDescription("Mexican");
+        Category fastFoodCategory = new Category();
+        fastFoodCategory.setDescription("Fast Food");
 
-        categoryRepository.save(category1);
-        categoryRepository.save(category2);
-        categoryRepository.save(category3);
-        categoryRepository.save(category4);
-        categoryRepository.save(category5);
+        categoryRepository.save(americanCategory);
+        categoryRepository.save(italianCategory);
+        categoryRepository.save(indianCategory);
+        categoryRepository.save(mexicalCategory);
+        categoryRepository.save(fastFoodCategory);
 
-        UnitOfMeasure unitOfMeasure1 = new UnitOfMeasure();
-        unitOfMeasure1.setDescription("Cup");
-        UnitOfMeasure unitOfMeasure2 = new UnitOfMeasure();
-        unitOfMeasure2.setDescription("Teaspoon");
-        UnitOfMeasure unitOfMeasure3 = new UnitOfMeasure();
-        unitOfMeasure3.setDescription("Pinch");
-        UnitOfMeasure unitOfMeasure4 = new UnitOfMeasure();
-        unitOfMeasure4.setDescription("Tablespoon");
-        UnitOfMeasure unitOfMeasure5 = new UnitOfMeasure();
-        unitOfMeasure5.setDescription("Ounce");
+        UnitOfMeasure cupUOM = new UnitOfMeasure();
+        cupUOM.setDescription("Cup");
+        UnitOfMeasure teaspoonUOM = new UnitOfMeasure();
+        teaspoonUOM.setDescription("Teaspoon");
+        UnitOfMeasure pinchUOM = new UnitOfMeasure();
+        pinchUOM.setDescription("Pinch");
+        UnitOfMeasure tablespoonUOM = new UnitOfMeasure();
+        tablespoonUOM.setDescription("Tablespoon");
+        UnitOfMeasure ounceUOM = new UnitOfMeasure();
+        ounceUOM.setDescription("Ounce");
 
-        unitOfMeasureRepository.save(unitOfMeasure1);
-        unitOfMeasureRepository.save(unitOfMeasure2);
-        unitOfMeasureRepository.save(unitOfMeasure3);
-        unitOfMeasureRepository.save(unitOfMeasure4);
-        unitOfMeasureRepository.save(unitOfMeasure5);
+        unitOfMeasureRepository.save(cupUOM);
+        unitOfMeasureRepository.save(teaspoonUOM);
+        unitOfMeasureRepository.save(pinchUOM);
+        unitOfMeasureRepository.save(tablespoonUOM);
+        unitOfMeasureRepository.save(ounceUOM);
+
+
+        Recipe guacamole = new Recipe();
+        guacamole.setDescription("The perfect Guacamole");
+        guacamole.setPrepTime(10);
+        guacamole.setCookTime(5);
+        guacamole.setDifficulty(Difficulty.EASY);
+        guacamole.setDirections("""
+                1. Cut the avocado
+                2. Mash the avocado flesh
+                3. Add the remaining ingredients to taste
+                4. Serve immediately
+                """
+                );
+        Notes guacamoleNotes = new Notes();
+        guacamoleNotes.setRecipeNotes("""
+                Be careful handling chilis! If using, it's best to wear food-safe gloves.
+                If no gloves are available, wash your hands thoroughly after handling, and do not touch your eyes or the area near your eyes for several hours afterwards.
+                """);
+
+        guacamole.setNotes(guacamoleNotes);
+
+        guacamole.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), cupUOM));
+        guacamole.addIngredient(new Ingredient("salt", new BigDecimal(1), teaspoonUOM));
+        guacamole.addIngredient(new Ingredient("fresh lime juice", new BigDecimal(2), ounceUOM));
+        guacamole.addIngredient(new Ingredient("black pepper", new BigDecimal(2), teaspoonUOM));
+
+        guacamole.getCategories().add(americanCategory);
+        guacamole.getCategories().add(indianCategory);
+
+
+        recipeRepository.save(guacamole);
+        System.out.println(guacamole);
     }
 
 }
