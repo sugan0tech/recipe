@@ -26,7 +26,7 @@ public class BootstrapData implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         Category americanCategory = new Category();
         americanCategory.setDescription("America");
@@ -94,6 +94,42 @@ public class BootstrapData implements CommandLineRunner {
 
         recipeRepository.save(guacamole);
         log.info(guacamole.toString());
+
+        Recipe tacosRecipe = new Recipe();
+        tacosRecipe.setDescription("The perfect Taco");
+        tacosRecipe.setPrepTime(15);
+        tacosRecipe.setCookTime(5);
+        tacosRecipe.setDifficulty(Difficulty.MODERATE);
+        tacosRecipe.setDirections("""
+                1.Rehydrate the chiles
+                2.Prepare the pineapple
+                3.Make the adobada marinade
+                4.Marinate the pork
+                5.Preheat the oven to 400°F
+                6.Sear the pork
+                7.Bake the pork
+                8.Roast the pineapple
+                9.Meanwhile, warm the tortillas
+                10.Slice the pork
+                """);
+        Notes tacosNotes = new Notes();
+        tacosNotes.setRecipeNotes("""
+                The key to the most flavorful tacos al pastor is to use Mexican dried chiles, achiote paste, and this easy recipe.
+                """);
+
+        tacosRecipe.setNotes(tacosNotes);
+
+        tacosRecipe.addIngredient(new Ingredient("pork", new BigDecimal(5), cupUOM));
+        tacosRecipe.addIngredient(new Ingredient("salt", new BigDecimal(1), teaspoonUOM));
+        tacosRecipe.addIngredient(new Ingredient("onion", new BigDecimal(2), ounceUOM));
+        tacosRecipe.addIngredient(new Ingredient("black pepper", new BigDecimal(2), teaspoonUOM));
+
+        tacosRecipe.getCategories().add(mexicalCategory);
+        tacosRecipe.getCategories().add(italianCategory);
+
+        recipeRepository.save(tacosRecipe);
+        log.info(tacosRecipe.toString());
+
     }
 
 }
