@@ -5,11 +5,13 @@ import com.recipe.project.recipe.models.*;
 import com.recipe.project.recipe.repositories.CategoryRepository;
 import com.recipe.project.recipe.repositories.RecipeRepository;
 import com.recipe.project.recipe.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Slf4j
 @Component
 public class BootstrapData implements CommandLineRunner {
     private final CategoryRepository categoryRepository;
@@ -91,7 +93,7 @@ public class BootstrapData implements CommandLineRunner {
 
 
         recipeRepository.save(guacamole);
-        System.out.println(guacamole);
+        log.info(guacamole.toString());
     }
 
 }
