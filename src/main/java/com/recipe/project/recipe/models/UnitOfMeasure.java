@@ -10,11 +10,17 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 public class UnitOfMeasure {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String description;
+
+    public UnitOfMeasure(String description){
+        this.description = description;
+    }
+
 
 }

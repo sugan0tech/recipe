@@ -11,10 +11,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class RecipeServiceImplTest {
+
     RecipeServiceImpl recipeServiceImpl;
     @Mock
     RecipeRepository recipeRepository;
@@ -33,6 +33,7 @@ class RecipeServiceImplTest {
         when(recipeRepository.findAll()).thenReturn(recipes);
         assertEquals(1, recipeServiceImpl.getRecipes().size());
         verify(recipeRepository).findAll();
+//        verify(recipeRepository, times(2)).findAll();  for n times of calls
     }
 
 
