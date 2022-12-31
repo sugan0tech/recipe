@@ -43,9 +43,11 @@ public class IndexController {
         model.addAttribute("uom", unitOfMeasureRepository.findAll());
         return "all";
     }
-    @RequestMapping("Recipes")
+    @RequestMapping({"Recipes", "rec"})
     public String getRecipes(Model model){
         model.addAttribute("recipes", recipeRepository.findAll());
         return "recipes";
     }
+
+
 }
