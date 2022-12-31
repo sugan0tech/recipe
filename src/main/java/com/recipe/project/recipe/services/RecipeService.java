@@ -5,6 +5,6 @@ import com.recipe.project.recipe.models.Recipe;
 import java.util.Set;
 
 public interface RecipeService {
-    public Set<Recipe> getRecipes();
-    public Recipe getRecipeById(Long id);
+    Set<Recipe> getRecipes();
+    Recipe getRecipeById(Long id);
 }
