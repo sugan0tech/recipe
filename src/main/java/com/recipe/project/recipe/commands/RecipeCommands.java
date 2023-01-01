@@ -3,6 +3,7 @@ package com.recipe.project.recipe.commands;
 import com.recipe.project.recipe.models.Category;
 import com.recipe.project.recipe.models.Difficulty;
 import com.recipe.project.recipe.models.Ingredient;
+import com.recipe.project.recipe.models.Notes;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,5 +26,5 @@ public class RecipeCommands {
     private Difficulty difficulty;
     private Set<Ingredient> ingredients = new HashSet<>();
     private  Set<Category> categories = new HashSet<>();
-    private NotesCommands notesCommands;
+    private Notes notes;
 }
