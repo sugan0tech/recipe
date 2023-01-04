@@ -5,7 +5,9 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.fasterxml.jackson.databind.util.Converter;
 import com.recipe.project.recipe.commands.RecipeCommands;
 import com.recipe.project.recipe.models.Recipe;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RecipeCommandToRecipe implements Converter<RecipeCommands, Recipe> {
 
 

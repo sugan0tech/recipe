@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.persistence.PreUpdate;
 import java.util.Optional;
 
 @Slf4j
@@ -48,6 +49,5 @@ public class IndexController {
         model.addAttribute("recipes", recipeRepository.findAll());
         return "recipes";
     }
-
 
 }

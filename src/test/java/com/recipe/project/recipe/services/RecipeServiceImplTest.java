@@ -1,5 +1,7 @@
 package com.recipe.project.recipe.services;
 
+import com.recipe.project.recipe.converters.RecipeCommandToRecipe;
+import com.recipe.project.recipe.converters.RecipeToRecipeCommand;
 import com.recipe.project.recipe.models.Recipe;
 import com.recipe.project.recipe.repositories.RecipeRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +19,9 @@ import static org.mockito.Mockito.*;
 class RecipeServiceImplTest {
 
     RecipeServiceImpl recipeServiceImpl;
+    RecipeToRecipeCommand recipeToRecipeCommand;
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
     @Mock
     RecipeRepository recipeRepository;
 
