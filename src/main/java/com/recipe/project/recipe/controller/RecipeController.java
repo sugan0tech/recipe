@@ -26,7 +26,7 @@ public class RecipeController {
 
     @RequestMapping("recipe/new")
     public String newRecipe(Model model){
-        model.addAttribute("model", new RecipeCommands());
+        model.addAttribute("recipe", new RecipeCommands());
         return "recipe/recipeform";
     }
 }

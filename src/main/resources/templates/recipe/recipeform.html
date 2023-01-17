@@ -5,24 +5,22 @@
     <title>Recipe Form</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.2.3/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
-          th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+<!--    <link rel="stylesheet"-->
+<!--          th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">-->
 
-    <script src="/webjars/jquery/3.6.1/jquery.min.js"></script>
+<!--    <script src="/webjars/jquery/3.6.1/jquery.min.js"></script>-->
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.2.3/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous" th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+<!--    &lt;!&ndash; Latest compiled and minified JavaScript &ndash;&gt;-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.2.3/js/bootstrap.min.js"-->
+<!--            crossorigin="anonymous" th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>-->
 </head>
 <body>
 <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form  th:object="${recipe}" th:action="@{/recipe/}"  method="post">
-                <input type="hidden" th:field="*{id}"/>
+            <form  action="#" th:object="${recipe}" th:action="@{/recipe}"  method="post">
+                <input type="text" th:field="*{id}"/>
                 <div class="pannel-group">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
