@@ -1,7 +1,7 @@
 package com.recipe.project.recipe.controller;
 
 import com.recipe.project.recipe.commands.RecipeCommands;
-import com.recipe.project.recipe.repositories.RecipeRepository;
+import com.recipe.project.recipe.repositories.CategoryRepository;
 import com.recipe.project.recipe.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Slf4j
 public class RecipeController {
+    private final CategoryRepository categoryRepository;
 
     RecipeService recipeService;
 
-    RecipeController(RecipeService recipeService){
+    RecipeController(RecipeService recipeService,
+                     CategoryRepository categoryRepository){
         this.recipeService = recipeService;
+        this.categoryRepository = categoryRepository;
     }
 
     @RequestMapping({"/recipe/{id}/show"})
@@ -30,6 +33,7 @@ public class RecipeController {
     @RequestMapping("recipe/new")
     public String newRecipe(Model model){
         model.addAttribute("recipe", new RecipeCommands());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "recipe/recipeform";
     }
     @PostMapping("recipe")
