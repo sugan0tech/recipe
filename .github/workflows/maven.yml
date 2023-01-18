@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: CI for RecipeApplication
 
 on:
   push:
@@ -17,7 +17,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: centos
 
     steps:
     - uses: actions/checkout@v3
@@ -28,4 +28,6 @@ jobs:
         distribution: 'corretto'
         cache: maven
     - name: Test
-      run: mvn -B package --file pom.xml
+      run: mvn Test -f pom.xml
+    - name: Build
+      run: mvn -B package -f pom.xml
