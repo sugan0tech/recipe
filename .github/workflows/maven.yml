@@ -28,6 +28,6 @@ jobs:
         distribution: 'corretto'
         cache: maven
     - name: Test
-      run: mvn Test -f pom.xml
+      run: mvn test -f pom.xml
     - name: Build
       run: mvn -B package -f pom.xml
